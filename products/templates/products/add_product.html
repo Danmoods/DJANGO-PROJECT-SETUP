@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Add Product
+{% endblock %}
+
+{% block content %}
+
+    <h2>Add a New Product</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Add Product
+        </button>
+
+    </form>
+
+    {% if submitted_product %}
+
+        <h3>Product Submitted Successfully!</h3>
+
+        <p>
+            Name: {{ submitted_product.name }}
+        </p>
+
+        <p>
+            Price: KSh {{ submitted_product.price }}
+        </p>
+
+        <p>
+            Quantity: {{ submitted_product.quantity }}
+        </p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="{% url 'home' %}">
+        Back to Home
+    </a>
+
+{% endblock %}
